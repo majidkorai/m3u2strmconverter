@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block title %}M3U to Stream Converter - A simple
+tool to generate stream files from m3u list for Jellyfin media server{% endblock
+%} {% block content%} {% if filename %}
+<div class="container text-center">
+  <div class="p-3">Stream files generated sucessfully.</div>
+  <div class="p-3">
+    Click <a data-file="{{filename}}" id="download" href="#">here</a> to
+    download files
+  </div>
+</div>
+{% else %}
+<form method="post" enctype="multipart/form-data">
+  <h3 class="text-center fw-bold mb-4">Upload M3U File</h3>
+  <div class="mb-3">
+    <label for="file" class="form-label">Select File</label>
+    <input
+      type="file"
+      class="form-control"
+      name="file"
+      id="file"
+      required
+      placeholder="Upload file"
+    />
+  </div>
+  <br />
+  <button class="btn btn-primary" type="submit">Upload</button>
+  <br />
+  <br /><br />
+  <div>
+    <p class="fw-bolder fs-5">
+      <i class="fa-regular fa-bell"></i>&nbsp;Important Notes:
+    </p>
+    <p>
+      This tool will generate stream ".strm" files for all the movies / series
+      from an m3u file and organize them in clean folder structure to be served
+      from a Jellyfin Media Server. Note that tool is free to use and there is
+      no guarantee / warranty for anything. Feel free to ping me if you need any
+      help or have any suggestions or comments.
+    </p>
+    <p>
+      Upload an m3u file in a specific format and tool will generate all the
+      files and you can download them as a zip file format.
+    </p>
+    <p>
+      M3U file has to be in specific format before uploading to this tool. for
+      TV series please upload your m3u file in
+      <a href="#" data-file="series.m3u" id="downloadseries">this</a> format and
+      for Movies use
+      <a data-file="movies.m3u" id="downloadmovies" href="#">this</a> format.
+    </p>
+  </div>
+</form>
+{% endif %} {% endblock %}
